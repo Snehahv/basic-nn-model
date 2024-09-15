@@ -96,21 +96,25 @@ ai_brain.predict(X_n1_1)
 ```
 ## Dataset Information
 
+![image](https://github.com/user-attachments/assets/80486d86-7cf6-4f8b-8448-4a30f6ada40a)
 
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Screenshot 2024-09-15 114409
+![Screenshot 2024-09-15 114409](https://github.com/user-attachments/assets/3c54939e-dacf-4eb5-aab2-fb0da94436e8)
+
 
 ### Test Data Root Mean Squared Error
 
-Find the test data root mean squared error
+![image](https://github.com/user-attachments/assets/59d25619-b073-4496-9433-1262c91c59d9)
+r
 
 ### New Sample Data Prediction
 
-Include your sample input and output here
+![image](https://github.com/user-attachments/assets/7a0d89bf-3871-4158-bb65-f862fdff23c9)
+
 
 ## RESULT
 
