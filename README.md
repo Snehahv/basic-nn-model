@@ -43,23 +43,66 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
-### Name:
-### Register Number:
+### Name:SNEHA HV
+### Register Number:212222040157
 ```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from tensorflow.keras.models import Sequential  # Space was missing between "models" and "import"
+from tensorflow.keras.layers import Dense
+from google.colab import auth
+import gspread
+from google.auth import default
 
-Include your code here
+auth.authenticate_user()
 
+creds,_ = default()
+gc = gspread.authorize (creds)
+worksheet = gc.open('dataset ex1').sheet1
+data = worksheet.get_all_values()
+
+dataset1 = pd.DataFrame(data[1:], columns=data[0])
+dataset1 = dataset1.astype({'INPUT': 'float'}) # Changed 'X' to '4' 
+dataset1 = dataset1.astype({'OUTPUT': 'float'}) # Changed 'Y' to '9'
+dataset1.head()
+
+X = dataset1[['INPUT']].values
+y = dataset1[['OUTPUT']].values
+#X
+X_train, X_test,y_train,y_test = train_test_split(X,y, test_size = 0.33, random_state = 33)
+Scaler = MinMaxScaler()
+Scaler.fit(X_train)
+
+X_train1 = Scaler.transform(X_train)
+ai_brain = Sequential ([
+Dense (8, activation = 'relu'),
+Dense (10, activation = 'relu'),
+Dense (1)
+])
+ai_brain.compile(optimizer = 'rmsprop', loss = 'mse')
+ai_brain.fit(X_train1, y_train, epochs =10)
+
+loss_df= pd.DataFrame(ai_brain.history.history)
+loss_df.plot()
+
+X_test1=Scaler.transform(X_test)
+ai_brain.evaluate(X_test1, y_test)
+
+X_n1=[[7]]
+X_n1_1=Scaler.transform(X_n1)
+ai_brain.predict(X_n1_1)
 
 ```
 ## Dataset Information
 
-Include screenshot of the dataset
+
 
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
 
-Include your plot here
+Screenshot 2024-09-15 114409
 
 ### Test Data Root Mean Squared Error
 
